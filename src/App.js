@@ -2,9 +2,11 @@ import React from 'react';
 import './App.css';
 import {WiCloud, WiDaySunny, WiDayCloudy, WiThunderstorm} from "weather-icons-react"
 import useSound from 'use-sound'
+import dingding from "./soundFX/coinJingle.mp3"
+import win from "./soundFX/youWin.mp3"
+import youLose from "./soundFX/gameOver.mp3"
 
-
-const word = ["jazzy",]
+const word = ["jazzy","party","vroom","darken","power","demon","testy","doggo","fisty"]
 const choice = word[Math.floor(Math.random() * word.length)]
 const wordList = choice.split("")
 var count = 0;
@@ -18,6 +20,9 @@ function App() {
   const [answerBox, setAnswer] = React.useState(Array(wordList.length).join(".").split("."))
   const [gameOver, setGame] = React.useState(false);
   const [dis, setDis] = React.useState(0)
+  const [ding] = useSound(dingding)
+  const [winner] = useSound (win)
+  const [lose] = useSound(youLose)
 
   const reducerScreen = (state, action) => {
     switch (action.type) {
@@ -53,13 +58,14 @@ function App() {
 
   const didYouWin = () => {
     
-    if (!answerBox.includes("")) {setTriumph(1); setGame(true);setGameOver({screenOne: "0vw", screenTwo: "0vw"})}
-    else if (count >= 3) {setGameOver({screenOne: "0vw", screenTwo: "0vw"})}
+    if (!answerBox.includes("")) {winner(); setTriumph(1); setGame(true);setGameOver({screenOne: "0vw", screenTwo: "0vw"})}
+    else if (count >= 3) {lose(); setGameOver({screenOne: "0vw", screenTwo: "0vw"})}
     
   }
   
   const guessChar = () => {
     const theGuess = document.getElementById("inputBar").value
+    if (theGuess != "") {
     if (wordList.includes(theGuess)) {
       if (answerBox.includes("")) {
         setBounce(1)}
@@ -82,16 +88,14 @@ function App() {
     } else {count++; console.log(`count: ${count.toString()}`)}
     document.getElementById("inputBar").value = ""
     dispatchScreen({type: (count.toString())})
-    didYouWin()
+    didYouWin()} else {}
   }
 
   const [bounce, setBounce] = React.useState(0)
   const [triumph, setTriumph] = React.useState(0)
   const [numHints, setHints] = React.useReducer(reducerCoin,{ li: [{class: "coin3"}, {class: "coin2"}, {class: "coin1"}], box: "scale(1)"})
-  const [ding] = useSound("./soundFX/coinJingle.mp3")
 
   const spendHint = () => {
-    ding()
     var count = numHints.li.length
     count = count - 1
     setHints({type: count.toString()})
@@ -114,7 +118,7 @@ function App() {
           <TextOVER isGameOver={gameOver}/>
         </div>
         <div className="restartButton" onClick={restartGame}>
-          <p className="noselect">Restart</p>
+          <p className="noselect">RESTART</p>
         </div>
       </div>
       <div onClick={spendHint} dis={dis} className="Hints" style={{transform: numHints.box}}>
