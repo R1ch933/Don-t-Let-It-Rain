@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Galada&display=swap');
+
 .App {
   text-align: center;
+  width: 99vw;
+  height: 48vw;
+  background-color: rgb(175, 173, 173);
+  overflow: hidden;
 }
 
 .App-logo {
@@ -28,11 +34,471 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mainContainer {
+  width: 41vw;
+  height: 41vw;
+  position: absolute;
+  left: 29vw;
+  top: 3vw;
+  background-color: rgb(255,255,255,.35);
+  border-radius: 5%;
+}
+
+.UI {
+  position: relative;
+  left: -1vw;
+}
+
+.graphicsBox, .stormyBox, .cloudyBox {
+  border-radius: 10%;
+  position: absolute;
+  width: 25vw;
+  height: 25vw;
+  background-color: white;
+  left: 8vw;
+  top: 2vw;
+  overflow: hidden;
+  transition: all ease-out 1s;
+}
+
+.stormyBox:hover {
+  animation-name: distort;
+  animation-duration: 1s;
+}
+
+.stormyBox:hover .stormy {
+  animation-name: thunderCrack;
+  animation-duration: 1s;
+}
+
+.graphicsBox:hover .sunny {
+  animation: sunShine 1s 1;
+}
+.graphicsBox:hover {
+  animation-name: lightUp;
+  animation-duration: 1s;
+}
+
+.cloudyBox:hover .cloudyBox1{
+  animation-name: moveCloud;
+  animation-duration: 6s;
+}
+
+.stormyBox[bounce='1'] .stormy {
+  animation: struggle .75s
+}
+.stormyBox[triumph='1'] .stormy {
+  animation: shrink 1.2s
+}
+
+
+.cloudyBox[bounce='1'] .cloudy{
+  animation: enlarge .5s
+}
+
+.cloudyBox[triumph='1'] .cloudy{
+  animation: dissipate 1s
+}
+
+.graphicsBox[bounce='1'] .sunny {
+  animation: hop .5s 
+}
+
+.graphicsBox[triumph='1'] .sunny {
+  animation: sunBlaze 1s 
+}
+
+@keyframes hop {
+  0% {top: 0vw;transform: rotate(180deg)}
+  50% {top: -3vw; color: red}
+  100% {top: 0vw;}
+}
+
+@keyframes sunBlaze {
+  0% {color: gold;transform: scale(1) rotate(360deg)}
+  50% { color: rgb(255, 112, 112);transform: scale(2)}
+  100% {color: gold; transform: scale(1)}
+}
+
+@keyframes enlarge {
+  0% {transform: scale(1)}
+  50% {transform: scale(1.3); color: rgb(206, 206, 206);}
+  100% {transform: scale(1)}
+}
+
+@keyframes dissipate {
+  0% {transform: scale(1)}
+  100% {transform: scale(2); color: rgb(206, 206, 206);}
+}
+
+@keyframes distort {
+  0% {background-color: white;}
+  50% {background-color: black;}
+  100% {background-color: white;}
+}
+
+@keyframes thunderCrack {
+  0% {color: black;}
+  50% {color: white; transform: scale(1.25)}
+  100% {color: black;}
+}
+
+@keyframes struggle {
+  0% {left: 0vw}
+  10% {left: -1vw}
+  20% {left: 1vw}
+  30% {left: -2vw}
+  40% {left: 2vw}
+  50% {left: -2vw}
+  60% {left: 2vw}
+  70% {left: -2vw}
+  80% {left: 1vw}
+  90% {left: -1vw}
+  100% {left: 0vw}
+}
+
+@keyframes shrink {
+  0% {transform: scale(1)}
+  100% {transform: scale(0)}
+}
+
+
+@keyframes sunShine {
+  0% {color: gold;transform: rotate(180deg)}
+  50% {color: rgb(255, 109, 109);}
+  100% {color: gold;}
+}
+
+@keyframes lightUp {
+  0% {background-color: white;}
+  50% {background-color: rgb(255, 243, 199);}
+  100% {background-color: white;}
+}
+
+@keyframes moveCloud {
+  from {left: 25vw;}
+  to {left: -15vw;}
+}
+
+.wordBox {
+  position: absolute;
+  width: 29vw;
+  height: 5vw;
+  align-content: center;
+  background-color: rgb(0,0,0,.35);
+  border-radius: 10%;
+  left: 6vw;
+  top: 28vw;
+}
+
+.wordContent {
+  align-content: center;
+  left:.5vw;
+  width: 28vw;
+  height: 4.5vw;
+  top: .25vw;
+  position: absolute;
+}
+
+.wordContent div {
+  align-content: center;
+
+}
+
+.charBoxNeutral {
+  position: relative;
+  top: .75vw;
+  background-color: white;
+  height: 3vw;
+  width: 3vw;
+  float: left;
+  margin-left: 1vw;
+  font-size: 2vw;
+  text-align: center;
+  border-radius: 10%;
+}
+
+.charBoxActive {
+  background-color: red;
+  height: 4.5vw;
+  width: 2vw;
+  float: left;
+  margin-left: 1vw;
+}
+
+.charBoxNeutral p {
+  margin-top: 0vw;
+}
+
+/* guessing css */
+
+.guess {
+  position: relative;
+  top: 35vw;
+  left: 2vw;
+}
+
+.buttonBox button {
+  height: 1.25vw;
+  width: 5vw;
+  font-size: .5vw;
+}
+
+/* graphical UI */
+.Graphix {
+  position: relative;
+  transition: all 1s ease-in;
+
+}
+
+.indicator {
+  margin-top: 5vw;
+  transition: all 1s ease-in;
+}
+
+.indicator:hover {
+}
+
+.sunny {
+  color: gold;
+  height: 15vw;
+  width: 15vw;
+  position: relative
+}
+.cloudy {
+  color: gray;
+  height: 15vw;
+  width: 15vw;
+}
+
+.cloudy2 {
+  color: gray;
+  height: 10vw;
+  width: 10vw;
+}
+
+.cloudyBox1 {
+  position: absolute;
+  transition: all 2s ease-in-out 0s;
+  left: 25vw;
+  top: 15vw;
+  width: 10vw;
+  height: 10vw;
+}
+
+
+.stormy{
+  color: black;
+  height: 15vw;
+  width: 15vw;
+  position: relative;
+}
+
+/* game over */
+.gameOverGate1 {
+  background: linear-gradient(to bottom, 
+  rgb(65,65,65), 
+  rgb(200,200,200),
+  rgb(65,65,65),
+  rgb(125,125,125), 
+  rgb(200,200,200)
+  );
+  height: 24vw;
+  width: 99vw;
+  left: 0vw;
+  position: relative;
+  z-index: 3;
+  border-bottom: groove;
+  border-color: rgb(200,200,200);
+  border-width: 1vw;
+  transition: all .6s ease-in;
+}
+
+.gameOverGate2 {
+  z-index: 3;
+  background: linear-gradient(to bottom,  
+  rgb(200,200,200),
+  rgb(65,65,65),
+  rgb(125,125,125),
+  rgb(200,200,200),
+  rgb(65,65,65));
+  height: 24vw;
+  width: 99vw;
+  left: 0vw;
+  position: relative;
+  border-top: groove;
+  border-color: rgb(200,200,200);
+  border-width: 1vw;
+  transition: all .6s ease-in;
+}
+
+.gameOverBox1 {
+  height: 8vw;
+  width: 28vw;
+  background-color: rgb(130,130,130);
+  position: absolute;
+  left: 35.5vw;
+  top: 13vw;
+  z-index: 4;
+  text-align: center;
+  font-size: 5vw;
+  font-family: impact;
+  border-radius: 20%;
+  border: inset;
+  border-width: 1vw;
+  border-color: rgb(200,200,200);
+}
+
+.gameOverBox2 {
+  text-align: center;
+  height: 8vw;
+  width: 28vw;
+  background-color: rgb(130,130,130);
+  position: absolute;
+  left: 35.5vw;
+  top: 2vw;
+  z-index: 4;
+  font-size: 5vw;
+  font-family: impact;
+  border-radius: 20%;
+  border: inset;
+  border-width: 1vw;
+  border-color: rgb(200,200,200);
+}
+
+.gameOverBox2 p {
+  margin-top: .5vw;
+  color: white
+}
+
+.gameOverBox1 p {
+  margin-top: 1vw;
+  color: white;
+}
+
+.restartButton {
+  position: absolute;
+  left: 85vw;
+  top: 16vw;
+  height: 5vw;
+  width: 10vw;
+  border-radius: 15%;
+  background-color: rgb(0,0,0,.5);
+  color: white;
+  font-size: 2.5vw;
+}
+
+.restartButton p {
+  margin-top: .7vw;
+  transition: all .1s ease-in;
+}
+
+.restartButton:hover p {
+  transform: scale(.75);
+}
+
+.Arrow {
+  width: 5vw; 
+  height: 5vw; 
+  float: left; 
+  color: white;
+  transition: all .2s ease-in;
+}
+
+/* instant resize */
+
+.resize-animation-stopper * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* hints */
+
+.Hints {
+  top: 5vw;
+  left: 75vw;
+  background-color: white;
+  width: 11vw;
+  height: 6vw;
+  position: absolute;
+  border-radius: 20%;
+  transition: all .2s ease-in;
+}
+
+.coin1, .coin2, .coin3 {
+  margin-top: .25vw;
+  background: linear-gradient(to right, gold, yellow, white, gold);
+  border-radius: 50%;
+  height: 4.5vw;
+  width: 4.5vw;
+  float: left;
+  border: double;
+  border-color: rgb(177, 167, 27);
+  border-width: .5vw;
+  margin-right: -3.5vw;
+  left: .75vw;
+  position: relative;
+  transition: all .3s ease-in-out .3s;
+  font-size: 1.25vw;
+}
+
+.coin1 p, .coin2 p, .coin3 p {
+  margin-top: 1.5vw;
+  font-family: 'Galada', cursive;
+  color: rgb(107, 101, 23);
+}
+
+.Hints:hover .coin1 {
+  animation: coinHop .2s;
+}
+
+.Hints:hover .coin2 {
+  animation: twoCoinHop .25s;
+}
+
+.Hints:hover .coin3 {
+  animation: threeCoinHop .4s;
+}
+
+.Hints[dis="1"] {
+  animation: disappear .3s;
+}
+
+p {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+@keyframes coinHop {
+  0% {top: -.5vw}
+  50% {top: -1vw}
+  100% {top: 0vw}
+}
+
+@keyframes twoCoinHop {
+  0% {top: 0vw}
+  50% {top: -.5vw}
+  75% {top: -1vw}
+  100% {top: 0vw}
+}
+
+@keyframes threeCoinHop {
+  0% {top: 0vw}
+  50% {top: 0vw}
+  75% {top: -.5vw}
+  90% {top: -1vw}
+  95% {top: -.5vw}
+  100% {top: 0vw}
+}
+
+@keyframes disappear {
+  0% {transform: scale(1);}
+  45% {transform: scale(1.2);}
+  100% {transform: scale(0);}
 }
