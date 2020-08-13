@@ -6,13 +6,14 @@ import dingding from "./soundFX/coinJingle.mp3"
 import win from "./soundFX/youWin.mp3"
 import youLose from "./soundFX/gameOver.mp3"
 
-const word = ["jazzy","party","vroom","darken","power","demon","testy","doggo","fisty"]
+const word = ["jazzy","party","vroom","darken","power","demon","testy","doggy","fisty", "dirty", "rocky", "onion", "dingle"]
 const choice = word[Math.floor(Math.random() * word.length)]
 const wordList = choice.split("")
 var count = 0;
 
 
 function App() {
+  
   
   const restartGame = () => window.location.reload()
 
@@ -54,17 +55,18 @@ function App() {
 
   const [screenState, dispatchScreen] = React.useReducer(reducerScreen, {position: "0vw", class: "graphicsBox"})
 
-  const [gameOverState, setGameOver] = React.useState({screenOne: "-25vw", screenTwo: "25vw"})
+  const [gameOverState, setGameOver] = React.useState({screenOne: "-100vh", screenTwo: "100vh"})
 
   const didYouWin = () => {
     
     if (!answerBox.includes("")) {winner(); setTriumph(1); setGame(true);setGameOver({screenOne: "0vw", screenTwo: "0vw"})}
-    else if (count >= 3) {lose(); setGameOver({screenOne: "0vw", screenTwo: "0vw"})}
+    else if (count >= 3) {lose(); setGameOver({screenOne: "0vh", screenTwo: "0vh"})}
     
   }
   
   const guessChar = () => {
-    const theGuess = document.getElementById("inputBar").value
+    const theGuess = document.getElementById("inputBar").value.toLowerCase()
+    
     if (theGuess != "") {
     if (wordList.includes(theGuess)) {
       if (answerBox.includes("")) {
@@ -188,9 +190,9 @@ const InputButton = ({guess, over}) => {
 
 const Input = ({over}) => {
   if (over == true) {
-    return (<input maxLength="1" type="text" id="inputBar" disabled />)
+    return (<input style={{width:"15vw", height:"auto"}} maxLength="1" type="text" id="inputBar" disabled />)
   }
-  else {return(<input maxLength="1" type="text" id="inputBar" />) }
+  else {return(<input style={{width:"15vw", height:"auto"}} maxLength="1" type="text" id="inputBar" />) }
 }
 
 let resizeTimer;

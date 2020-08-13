@@ -2,8 +2,8 @@
 
 .App {
   text-align: center;
-  width: 99vw;
-  height: 48vw;
+  width: 100vw;
+  height: 100vh;
   background-color: rgb(175, 173, 173);
   overflow: hidden;
 }
@@ -235,7 +235,10 @@
 .guess {
   position: relative;
   top: 35vw;
-  left: 2vw;
+  left: 10vw;
+  height: fit-content;
+  width: fit-content;
+
 }
 
 .buttonBox button {
@@ -303,7 +306,7 @@
   rgb(125,125,125), 
   rgb(200,200,200)
   );
-  height: 24vw;
+  height: 50vh;
   width: 99vw;
   left: 0vw;
   position: relative;
@@ -322,7 +325,7 @@
   rgb(125,125,125),
   rgb(200,200,200),
   rgb(65,65,65));
-  height: 24vw;
+  height: 50vh;
   width: 99vw;
   left: 0vw;
   position: relative;
@@ -338,7 +341,7 @@
   background-color: rgb(130,130,130);
   position: absolute;
   left: 35.5vw;
-  top: 13vw;
+  top: 20vh;
   z-index: 4;
   text-align: center;
   font-size: 5vw;
@@ -354,9 +357,9 @@
   height: 8vw;
   width: 28vw;
   background-color: rgb(130,130,130);
-  position: absolute;
+  position: relative;
   left: 35.5vw;
-  top: 2vw;
+  top: 15vh;
   z-index: 4;
   font-size: 5vw;
   font-family: impact;
@@ -379,7 +382,7 @@
 .restartButton {
   position: absolute;
   left: 85vw;
-  top: 16vw;
+  top: 35vh;
   height: 5vw;
   width: 11vw;
   border-radius: 15%;
